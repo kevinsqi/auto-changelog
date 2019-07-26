@@ -19,7 +19,7 @@ const MERGE_PATTERNS = [
 ]
 
 export async function fetchCommits (remote, options, branch = null, onProgress) {
-  const command = `git log ${options.startingCommit}...HEAD`
+  const command = `git log ${options.startingCommit}^..HEAD`
   // const command = branch ? `git log ${branch}` : 'git log'
   const format = await getLogFormat()
   const log = await cmd(`${command} --shortstat --pretty=format:${format} ${options.appendGitLog}`, onProgress)
